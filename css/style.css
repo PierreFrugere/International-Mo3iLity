@@ -1,142 +1,233 @@
-/*
-* By Jose Aguinaga
-* http://jjperezaguinaga.com
-*/
-@import url(https://fonts.googleapis.com/css?family=Pathway+Gothic+One);
+/* Reinitialisation du CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
 body {
-    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #f2efd9 100%);
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
 }
 
-@-webkit-keyframes rotate-right {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-    }
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
 }
-@-webkit-keyframes rotate-left {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(-360deg);
-    }
-}
-@-webkit-keyframes hover {
-    0% {
-        -webkit-transform: translateY(0%);
-    }
-    50% {
-        -webkit-transform: translateY(5%);
-    }
-    100% {
-        -webkit-transform: translateY(0%);
-    }
-}
-@-webkit-keyframes pull {
-    0% {
-        -webkit-transform: scaleY(1);
-    }
-    40% {
-        -webkit-transform: scaleY(1.01);
-    }
-    60% {
-        -webkit-transform: scaleY(0.99);
-    }
-    80% {
-        -webkit-transform: scaleY(1.01);
-    }
-    100% {
-        -webkit-transform: scaleY(0.99);
-    }
-    80% {
-        -webkit-transform: scaleY(1.01);
-    }
-    100% {
-        -webkit-transform: scaleY(1);
-    }
-}
-#airplane2,
-#airplane1 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-right 60s linear 0s infinite;
+del {
+    text-decoration: line-through;
 }
 
-#countryObjects {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-right 240s linear 0s infinite;
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-#floatingGlobe {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-left 360s linear 0s infinite;
+/* Début du vrai css TODO - voir code à splitter en 2 */
+
+body {
+    font: 16px/1.4em 'PT Sans', sans-serif;;
+    color: #1c1c1c;
 }
 
-#globe {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: hover 0s linear 0s infinite;
+p,
+ul {
+    margin: 0 0 1.5em;
 }
 
-#windmill {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 331px 201px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-right 2s linear 0s infinite;
+ul {
+    list-style: disc;
+    padding: 0 0 0 20px;
 }
 
-#cloud1 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: hover 3s linear 1s infinite;
+a {
+    color: #1D745A;
 }
 
-#cloud2 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: hover 3s linear 2s infinite;
+h1 {
+
 }
 
-#cloud3 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: hover 3s linear 3s infinite;
+h2 {
+    font-family: 'PT Serif', serif;
+    font-size: 32px;
+    line-height: 1.4em;
+    margin: 0 0 .4em;
+    font-weight: bold;
 }
 
-#circle1 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-right 12s linear 0s infinite;
+/*layout*/
+
+.wrapper {
 }
 
-#circle2 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-left 24s linear 0s infinite;
+article {
+    border-bottom: 1px solid #d8d8d8;
+    padding: 10px 20px 0 20px;
+    margin: 10px 0;
 }
 
-#circle3 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-right 12s linear 0s infinite;
+/*header*/
+
+header {
+    background: #1c1c1c;
+    padding: 15px 20px;
 }
 
-#circle4 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-left 24s linear 0s infinite;
+/*shorter clearfix http://nicolasgallagher.com/micro-clearfix-hack/*/
+header:before,
+header:after {
+    content:"";
+    display:table;
 }
 
-#circle5 {
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-transform-origin: 200px 200px;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-animation: rotate-right 12s linear 0s infinite;
+header:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+header {
+    zoom:1;
+}
+
+h1.logo a {
+    color: #d8d8d8;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 22px;
+    float: left;
+    letter-spacing: 0.2em;
+}
+
+a.to_nav {
+    float: right;
+    color: #fff;
+    background: #4e4e4e;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 22px;
+    height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+a.to_nav:hover,
+a.to_nav:focus {
+    color: #1c1c1c;
+    background: #ccc;
+}
+
+/*menu*/
+
+#primary_nav ul {
+    list-style: none;
+    background: #1c1c1c;
+    padding: 5px 0;
+}
+
+#primary_nav li a {
+    display: block;
+    padding: 0 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    letter-spacing: 0.1em;
+    line-height: 2em;
+    height: 2em;
+    border-bottom: 1px solid #383838;
+}
+
+#primary_nav li:last-child a {
+    border-bottom: none;
+}
+
+#primary_nav li a:hover,
+#primary_nav li a:focus {
+    color: #1c1c1c;
+    background: #ccc;
+}
+
+/*pied de page*/
+
+footer {
+    font-family: 'PT Serif', serif;
+    font-style: italic;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    a.to_nav {
+        display: none;
+    }
+
+    .wrapper {
+        position: relative;
+        margin: auto;
+    }
+
+    #primary_nav {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        background: none;
+    }
+
+    #primary_nav li {
+        display: inline;
+    }
+
+    #primary_nav li a {
+        float: left;
+        border: none;
+        padding: 0 10px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+
+
+}
+#primary_nav li.top {
+    display: none;
 }
