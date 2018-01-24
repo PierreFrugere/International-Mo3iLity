@@ -2,7 +2,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Internationnal Mo3iLity</title>
+    <title>International Mo3iLity</title>
     <meta name="description" content="Projet de site web sur le choix de la mobilité internationnale à l'école 3iL">
     <meta name="author" content="Florian Louargant & Pierre Frugere">
 
@@ -14,6 +14,9 @@
 
     <!--css-->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- js -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
 
     <!--    TODO - voir l'utilité réellement-->
     <!--[if lt IE 9]>
@@ -28,10 +31,7 @@
 
 <div class="wrapper">
 
-    <header>
-        <h1 class="logo"><a href="">International Mo3iLity</a></h1>
-        <a class="to_nav" href="#primary_nav">Menu</a>
-    </header>
+    <?php include('Defaut/header.html'); ?>
 
     <!--     Contenu de la page -->
     <div class="container">
@@ -62,20 +62,9 @@
         <p>Work In Progress</p>
     </div><!--container-->
 
-    <nav id="primary_nav">
-        <ul>
-            <li><a href="">Accueil</a></li>
-            <li><a href="">Destinations</a></li>
-            <li><a href="">Faire ses voeux</a></li>
-            <li><a href="">Témoignages</a></li>
-            <li><a href="">Contact</a></li>
-            <li class="top"><a href="#home">Top</a></li>
-        </ul>
-    </nav><!--end primary_nav-->
+    <?php include('Defaut/menu.html'); ?>
 
-    <footer>
-        <p>Copyright &copy; <?php echo date("Y"); ?> - Florian Louargant & Pierre Frugere.</p>
-    </footer>
+    <?php include('Defaut/footer.phtml'); ?>
 
     <script src="../js/slider.js"></script>
 </div><!--end wrapper-->

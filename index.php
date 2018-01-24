@@ -1,3 +1,2 @@
 <?php
-//Teste commit
-require_once (__DIR__.'\controleurs\ControllerIndex.php'); // chargement du controlleur de l'index
+require_once (__DIR__.'\controleurs\ControllerIndex.php'); // Chargement du controleur de l'index
