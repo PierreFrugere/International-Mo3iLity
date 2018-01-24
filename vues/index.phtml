@@ -35,6 +35,29 @@
 
     <!--     Contenu de la page -->
     <div class="container">
+        <div class="slider-content slider-display-container">
+            <div class="slider-display-container mySlides">
+                <img src="../medias/images/ottawa.jpg" style="width:100%">
+                <div class="slider-display-middle-bottom slider-large slider-container slider-padding-16 slider-black">
+                    Ottawa
+                </div>
+            </div>
+            <div class="slider-display-container mySlides">
+                <img src="../medias/images/saguenay.jpg" style="width:100%">
+                <div class="slider-display-middle-bottom slider-large slider-container slider-padding-16 slider-black">
+                    Saguenay
+                </div>
+            </div>
+            <div class="slider-display-container mySlides">
+                <img src="../medias/images/sofia.jpg" style="width:100%">
+                <div class="slider-display-middle-bottom slider-large slider-container slider-padding-16 slider-black">
+                    Sofia
+                </div>
+            </div>
+
+            <button class="slider-button slider-black slider-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="slider-button slider-black slider-display-right" onclick="plusDivs(1)">&#10095;</button>
+        </div>
         <h4>Basic Page</h4>
         <p>Work In Progress</p>
     </div><!--container-->
@@ -54,6 +77,7 @@
         <p>Copyright &copy; <?php echo date("Y"); ?> - Florian Louargant & Pierre Frugere.</p>
     </footer>
 
+    <script src="../js/slider.js"></script>
 </div><!--end wrapper-->
 
 </body>
