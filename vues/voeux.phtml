@@ -35,7 +35,81 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Voeux Page</h4>
+        <h4>Voeux Page</h4> <br />
+
+        <form method="post" id="voeux-form">
+            <label for="lastname">Nom : </label>
+            <input type="text" id="lastname"/><br />
+            <label for="firstname">Prénom : </label>
+            <input type="text" id="firstname"/><br />
+            <label for="firstname">Année scolaire : </label>
+            <select name="schoolYear" id="schoolYear">
+                <option value="lastYear"><?php $current= date("Y"); echo $current-2 . " - " . ($current+1);  ?></option>
+                <option value="currentYear"><?php echo $current-1 . " - " . ($current+2); ?></option>
+                <option value="nextYear"><?php echo $current . " - " . ($current+3); ?></option>
+            </select><br />
+            <label for="group">Groupe : </label>
+            <input type="text" id="group"/><br />
+            <label for="listVoeux">Voeux ordonnés : </label>
+            <p>Seuls les sept premiers voeux seront retenus. Ils doivent contenir les destinations partenaires avec l'école 3iL.</p>
+
+            <!-- tableau drag & drop -->
+            <table id="sort" class="grid" title="Kurt Vonnegut novels">
+                <thead>
+                    <tr><th class="index">No.</th><th>Lieu</th><th>Ecole</th><th>Durée (semaines)</th></tr>
+                </thead>
+                <tbody>
+                <?php
+                $index=1;
+                $NB_MAX_DESTI = 7;
+                foreach ($listeDestinations as $rowUniversity) {
+                    // affichage différents pour les 7 premiers choix
+                    if ($index <= $NB_MAX_DESTI) {
+                        // destination obligatoire --> affichage différent
+                        if ($rowUniversity["estObligatoire"] == 1) {
+                            echo "<tr class='rowToSelect obligatoire' style='background-color: #4CAF50;'>
+                                <td class='index'>" . $index . "</td>
+                                <td>" . $rowUniversity["pays"] . "</td>
+                                <td>" . $rowUniversity["nomEcole"] . "</td>
+                                <td>" . $rowUniversity["duree"] . "</td>
+                              </tr>";
+                        } else {
+                            echo "<tr class='rowToSelect nonObligatoire'>
+                                <td class='index'>" . $index . "</td>
+                                <td>" . $rowUniversity["pays"] . "</td>
+                                <td>" . $rowUniversity["nomEcole"] . "</td>
+                                <td>" . $rowUniversity["duree"] . "</td>
+                              </tr>";
+                        }
+
+                    } else {
+                        // destination obligatoire --> affichage différent
+                        if ($rowUniversity["estObligatoire"] == 1) {
+                            echo "<tr class='obligatoire' style='background-color: #4CAF50;'>
+                                <td class='index'>" . $index . "</td>
+                                <td>" . $rowUniversity["pays"] . "</td>
+                                <td>" . $rowUniversity["nomEcole"] . "</td>
+                                <td>" . $rowUniversity["duree"] . "</td>
+                              </tr>";
+                        } else {
+                            echo "<tr class='nonObligatoire'>
+                                <td class='index'>" . $index . "</td>
+                                <td>" . $rowUniversity["pays"] . "</td>
+                                <td>" . $rowUniversity["nomEcole"] . "</td>
+                                <td>" . $rowUniversity["duree"] . "</td>
+                              </tr>";
+                        }
+                    }
+                    $index++;
+                }
+                ?>
+                </tbody>
+            </table>
+            <br />
+            <input type="submit" id="submit" value="Valider"/>
+            </p>
+        </form>
+
         <p>Work In Progress</p>
     </div><!--container-->
 
@@ -43,6 +117,7 @@
 
     <?php include('Defaut/footer.phtml'); ?>
 
+    <script src="../js/voeuxArray.js"></script>
 </div><!--end wrapper-->
 
 </body>

@@ -1,2 +1,2 @@
 <?php
-require_once (__DIR__.'\controleurs\ControllerConnexion.php'); // Chargement du controlleur de l'index
+ (__DIR__.'\controleurs\ControllerConnexion.php'); // Chargement du controlleur de l'indexrequire_once

@@ -17,14 +17,14 @@ class ModelVoeux
         $this->myPDO = new MyPDO();
     }
 
-    public function getLangue() {
-        $allLangues = array();
+    public function getAllDestination() {
+        $allDesti = array();
 
-        $sql =  'SELECT * FROM langue';
+        $sql =  'SELECT * FROM destination ORDER BY estObligatoire DESC';
         foreach  ($this->myPDO->query($sql) as $row) {
-            array_push($allLangues, $row);
+            array_push($allDesti, $row);
         }
-        return $allLangues;
+        return $allDesti;
     }
 }
 
