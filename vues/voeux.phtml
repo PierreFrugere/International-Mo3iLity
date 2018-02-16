@@ -37,7 +37,14 @@
     <div class="container">
         <h4>Voeux Page</h4> <br />
 
-        <form method="post" id="voeux-form">
+        <form action="processVoeux.php" method="post" id="voeux-form">
+            <label for="school">Ecole : </label>
+            <input type="radio" id="groupRodez" name="group" value="Rodez" onchange="afficherGroupe();" checked />
+            <label for="groupRodez">3iL Rodez</label>
+            <input type="radio" id="groupLimoges" name="group" value="Limoges" onchange="afficherGroupe();"/>
+            <label for="groupLimoges">3iL Limoges</label>
+            <br />
+
             <label for="lastname">Nom : </label>
             <input type="text" id="lastname"/><br />
             <label for="firstname">Prénom : </label>
@@ -48,13 +55,19 @@
                 <option value="currentYear"><?php echo $current-1 . " - " . ($current+2); ?></option>
                 <option value="nextYear"><?php echo $current . " - " . ($current+3); ?></option>
             </select><br />
-            <label for="group">Groupe : </label>
-            <input type="text" id="group"/><br />
+            <!-- demande du groupe uniquement pour 3iL Rodez -->
+            <div id="groupe3iL">
+                <label for="group">Groupe : </label>
+                <select name="group" id="group">
+                    <option value="groupA">A</option>
+                    <option value="groupB">B</option>
+                </select><br />
+            </div>
             <label for="listVoeux">Voeux ordonnés : </label>
             <p>Seuls les sept premiers voeux seront retenus. Ils doivent contenir les destinations partenaires avec l'école 3iL.</p>
 
             <!-- tableau drag & drop -->
-            <table id="sort" class="grid" title="Kurt Vonnegut novels">
+            <table id="sort" class="grid" title="ListeDesVoeux">
                 <thead>
                     <tr><th class="index">No.</th><th>Lieu</th><th>Ecole</th><th>Durée (semaines)</th></tr>
                 </thead>
@@ -107,6 +120,7 @@
             </table>
             <br />
             <input type="submit" id="submit" value="Valider"/>
+            <!-- TODO action d'envoi de formulaire (ne pas récupérer le groupe si l'élève vient de 3iL Limoges) -->
             </p>
         </form>
 

@@ -36,7 +36,59 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Destinations Page</h4>
+        <h4>Liste des destinations possibles</h4>
+        <div class="searchArea">
+            <form id="searchDestination" action="/"
+            <input type="text" class="searchTerm" placeholder="Rechercher une université, un mot-clé...">
+            <br />
+            <label for="spokenLanguage">Langue : </label>
+            <?php
+            foreach ($listeLangue as $rowLangue) {
+                echo "<input type='checkbox' name='" . $rowLangue["idLangue"] . "'/>" . $rowLangue["libelleLangue"] . "</option>";
+            }?>
+            <br />
+            <label for="Pays">Pays : </label>
+            <select name="pays" id="pays">
+                <option value="allPays">Tous</option>
+                <?php
+
+                foreach ($listePays as $rowPays) {
+                    echo "<option value='" . $rowPays["pays"] . "'" . $rowPays . "'>" . $rowPays["pays"] . "</option>";
+                }?>
+            </select><br />
+            <button type="submit" class="searchButton" onclick="rechercheDetaillee()">
+                Lancer la recherche
+            </button>
+        </form>
+        </div>
+        <hr />
+        <div class="resultDestination">
+            <!-- TODO boucle for de parcours des resultats -->
+            <?php foreach ($listeDestinations as $rowDesti) {
+                // mise en forme CSS : fsDefault puis une couleur spécifique pour chaque pays
+                echo "<fieldset class='fsDefault " . $rowDesti[pays] . "'>
+                        <legend>" . $rowDesti[pays] . "</legend>";
+                ?>
+            <!-- logo aligné intérieur gauche -->
+            <div class="logoRow">
+                <img src="../medias/images/<?= $rowDesti[idDestination] ?>.jpg" alt=<?= $rowDesti[nomEcole]?>/>
+            </div>
+            <!-- premiere partie du texte alignée intérieur haut droite -->
+            <div class="topTextRow"><?=$rowDesti[nomEcole]?></div>
+            <!-- seconde partie intérieur bas droite -->
+            <div class="bottomTextRow">
+                Langue(s) : <?php
+                for ($i = 0 ; $i < sizeof($listeLangueByPays) ; $i++) {
+                    if ($i == sizeof($listeLangueByPays)-1) {
+                        echo $listeLangueByPays[i][libelleLangue];
+                    } else {
+                         echo $listeLangueByPays[i][libelleLangue] . ", ";
+                    }?>
+            </div>
+
+            <?php } ?>
+
+        </div>
         <p>Work In Progress</p>
     </div><!--container-->
 
@@ -44,6 +96,7 @@
 
     <?php include('Defaut/footer.phtml'); ?>
 
+    <script src="../js/destination.js"></script>
 </div><!--end wrapper-->
 
 </body>

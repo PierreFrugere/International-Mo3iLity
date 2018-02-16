@@ -10,9 +10,6 @@ $('document').ready(function()
                 firstname: {
                     required: true,
                 }
-                group: {
-                    required: true,
-                }
             },
         messages:
             {
@@ -21,16 +18,13 @@ $('document').ready(function()
                 },
                 firstname:{
                     required: "Veuillez saisir votre prénom"
-                },
-                group:{
-                    required: "Veuillez saisir votre groupe"
-                },
+                }
             },
         submitHandler: submitForm
     });
     /* validation */
-    //TODO copier coller de connexion, voir comment le modifier
-    /* login submit */
+
+    /* formulaire voeux submit */
     function submitForm()
     {
         var data = $("#voeux-form").serialize();
@@ -65,5 +59,4 @@ $('document').ready(function()
         });
         return false;
     }
-    /* login submit */
 });
