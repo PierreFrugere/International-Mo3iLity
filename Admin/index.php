@@ -1,2 +1,2 @@
 <?php
-require_once (__DIR__.'\controleurs\ControllerAdmin.php'); // Chargement du controlleur de l'index
+require_once (__DIR__ . '\controleurs\ControllerIndex.php'); // Chargement du controlleur de l'index

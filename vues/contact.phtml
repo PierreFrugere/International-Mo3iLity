@@ -37,12 +37,22 @@
     <!--     Contenu de la page -->
     <div class="container">
         <h4>Contact Page</h4>
-        <p>Work In Progress</p>
+        <div class="form-style">
+            <form method="post" class="myform" action="/Form/contact_me.php">
+                <input type="text" name="name" placeholder="Your Name" required><br>
+                <input type="email" name="email" placeholder="Your Email" required><br>
+                <textarea rows="4" cols="20" name="message" placeholder="Your Message"></textarea><br>
+                <input type="submit" name="send" value="Send"> <span class="output_message"></span>
+            </form>
+        </div>
     </div><!--container-->
 
-    <?php include('Defaut/menu.html'); ?>
+    <?php include('Defaut/menu.phtml'); ?>
 
     <?php include('Defaut/footer.phtml'); ?>
+
+    <script src="../js/contact.js"></script>
+    <script src="../js/alert-box.js"></script>
 
 </div><!--end wrapper-->
 
