@@ -19,23 +19,26 @@ class ModelDestinations
 
     /**
      * Selection des destinations en fonction des critères de recherche stockés dans un tableau
-     * @param $criteres
+     * @param $recherche : recherche de texte par l'utilisateur
+     * @param $pays : pays seléctionné par l'utilisateur
+     * @param $listLang : langages seléctionnés par l'utilisateur
      */
-    public function getListeDestinationsCriteria($criteres) {
-        $allPays = array();
+    public function getListeDestinationsCriteria($recherche, $pays, $listLang) {
+        $allDesti = array();
         // index de parcours des langues dans $languages
         $i = 0;
         // taille du tableau $languages
-        $taille = sizeof($criteres);
+        $taille = sizeof($listLang);
 
         // aucune langue séléctionnée => renvoie tous les pays
         if ($taille == 0) {
-            $sql =  'SELECT DISTINCT(pays) FROM destination ORDER BY pays';
+            $sql =  'SELECT * FROM destination ORDER BY pays';
         } else {
-            $sql =  'SELECT DISTINCT(pays) FROM destination JOIN parler ON parler.idDestination = destination.idDestination WHERE parler.idLangue IN (';
+            $sql =  'SELECT * FROM destination JOIN parler ON parler.idDestination = destination.idDestination ';
+            $sql .= 'WHERE parler.idLangue IN (';
 
             do {
-                $sql.= $laLangue[$i] . '\'';
+                $sql.= $listLang[$i] . '\'';
                 // on n'ajoute pas de virgule pour le dernier élément
                 if ($i < $taille) {
                     $sql.= ',';
@@ -47,9 +50,9 @@ class ModelDestinations
         echo $sql;
 
         foreach  ($this->myPDO->query($sql) as $row) {
-            array_push($allPays, $row);
+            array_push($allDesti, $row);
         }
-        return $allPays;
+        return $allDesti;
     }
 
     public function getListePays() {
