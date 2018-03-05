@@ -2,37 +2,44 @@
 require_once (__DIR__.'\..\modeles\ModelDestinations.php'); // chargement du modèle
 $mi = new ModelDestinations();
 $listeLangue = $mi->getListeLangue();
-// $listePaysCritere = $mi->getListePaysCriteria($selectedCriteria);
+// tableau 2D pour stocker les langues parlées dans chaque pays
+$listeLangueByPays = array();
+// paramètres de recherche par défaut
+$recherche = "";
+$selectedPays = "Tous";
+$selectedLang = array();
 
-// $listeLangueByPays = $mi->getListeLangueByPays($pays);
 $listePays = $mi->getlistePays();
-$boollll = false;
+$premierAppel = true;
 /* --- DEBUT récupération valeurs formulaire avec GET --- */
-if (isset($_GET["search"])) {
-    $recherche  = $_GET["search"];
-    echo $recherche."<br />";
-    $boollll = true;
-}
-if (isset($_GET["pays"])) {
-    $selectedPays = $_GET["pays"];
-    echo $selectedPays."<br />";
-    $boollll = true;
-}
-if (isset($_GET["lang"])) {
-    $selectedLang = $_GET["lang"];
-    foreach ($selectedLang as $aLanguage){
-        echo $aLanguage."<br />";
-    }
-    $boollll = true;
+if (isset($_POST["search"]) && $_POST["search"] != "") {
+    $recherche  = $_POST["search"];
+    $premierAppel = false;
 }
 
+if (isset($_POST["pays"])) {
+    $selectedPays = $_POST["pays"];
+    $premierAppel = false;
+}
 
-
-
-
+if (isset($_POST["lang"])) {
+    $selectedLang = $_POST["lang"];
+    $premierAppel = false;
+}
 /* --- FIN récupération --- */
-if ($boollll) {
+
+if (!$premierAppel) {
+    $listeDestinations = $mi->getListeDestinationsCriteria($recherche, $selectedPays, $selectedLang);
+} else {
+    // premier appel de la page --> affiche toutes les destinations
     $listeDestinations = $mi->getListeDestinationsCriteria($recherche, $selectedPays, $selectedLang);
 }
-
+/*
+ * censé récupérer les langues parlées pour chaque pays mais ne fonctionne pas. (pb tableau)
+for ($i = 0 ; $i < sizeof($listeDestinations) ; $i++) {
+    $listeLangueByPays[$i] = $mi->getListeLangueByPays($listeDestinations[$i]["idDestination"]);
+}
+//print_r($mi->getListeLangueByPays($listeDestinations));
+//print_r($listeLangueByPays);
+*/
 require (__DIR__.'\..\vues\destinations.phtml'); //redirige vers la vue

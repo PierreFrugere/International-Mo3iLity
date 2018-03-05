@@ -24,37 +24,83 @@ class ModelDestinations
      * @param $listLang : langages seléctionnés par l'utilisateur
      */
     public function getListeDestinationsCriteria($recherche, $pays, $listLang) {
-        $allDesti = array();
-        // index de parcours des langues dans $languages
+        $destiResult = array();
+        // index de parcours des langues dans $listLang
         $i = 0;
-        // taille du tableau $languages
-        $taille = sizeof($listLang);
 
-        // aucune langue séléctionnée => renvoie tous les pays
-        if ($taille == 0) {
-            $sql =  'SELECT * FROM destination ORDER BY pays';
-        } else {
-            $sql =  'SELECT * FROM destination JOIN parler ON parler.idDestination = destination.idDestination ';
+        $isFirstCrit = true;
+
+        // taille du tableau $listLang contenant les ID des langues seléctionnées
+        $szLang = sizeof($listLang);
+
+        // découpage de la chaine de caractères en tableau de mots pour une recherche appropriée
+        $words = explode(" ", $recherche);
+
+        $sql = 'SELECT * FROM destination ';
+
+        /* Construction de la requête SQL en fonction des paramètres donnés */
+        // langue(s) parlée(s) choisie(s)
+        if ($szLang <> 0) {
+            $sql .= 'JOIN parler ON destination.idDestination = parler.idDestination ';
             $sql .= 'WHERE parler.idLangue IN (';
 
             do {
-                $sql.= $listLang[$i] . '\'';
+                $sql.= '\'' . $listLang[$i] . '\'';
+                $i++;
                 // on n'ajoute pas de virgule pour le dernier élément
-                if ($i < $taille) {
+                if ($i < $szLang) {
                     $sql.= ',';
                 }
-            } while ($i < $taille);
-            $sql .= ') ORDER BY pays';
+
+            } while ($i < $szLang);
+            $sql .= ') ';
+            $isFirstCrit = false;
         }
 
-        echo $sql;
+        // pays choisi
+        if ($pays <> "Tous") {
+            // si un autre critère a été seléctionné auparavant, on concatène en fonction de la rqt précédente
+            // sinon écrire clause WHERE
+            $sql .= (($isFirstCrit)?'WHERE':'AND') . ' destination.pays = \'' . $pays . '\' ';
+            $isFirstCrit = false;
+        }
+
+        // mot(s)-clé(s) choisi(s)
+        if ($words[0] <> "") {
+            // raz indice parcours
+            $i = 0;
+
+            // si un autre critère a été seléctionné auparavant, on concatène en fonction de la rqt précédente
+            // sinon écrire clause WHERE
+            $sql .= (($isFirstCrit)?'WHERE':'AND') . ' (destination.descriptif REGEXP ';
+
+            do {
+                $sql.= '\'' . $words[$i] . '\'';
+                $i++;
+                // on n'ajoute pas de 'AND' pour le dernier élément
+                if ($i < sizeof($words)) {
+                    $sql.= ' AND destination.descriptif REGEXP ';
+                }
+
+            } while ($i < sizeof($words));
+            $sql .= ') ';
+            $isFirstCrit = false;
+        }
+
+        // aucun critère séléctionné => renvoie toutes les destinations
+
+        $sql .= ' ORDER BY pays';
 
         foreach  ($this->myPDO->query($sql) as $row) {
-            array_push($allDesti, $row);
+            array_push($destiResult, $row);
         }
-        return $allDesti;
+        return $destiResult;
     }
 
+
+    /**
+     * @return $allPays : tableau contenant la liste des pays
+     */
     public function getListePays() {
         $allPays = array();
 
@@ -76,15 +122,24 @@ class ModelDestinations
         return $allLanguages;
     }
 
+    /**
+     * @unused
+     * @param $idPays
+     * @return array contenant les libellés des langues parlées par le pays
+     */
     public function getListeLangueByPays($idPays) {
         $languages = array();
-
-        $sql =  'SELECT DISTINCT(libelleLangue) FROM langue JOIN parler ON langue.idLangue = parler.idLangue';
-        $sql .= ' JOIN destination ON destination.idDestination = parler.idDestination ';
+        // TODO PDO cf connexion
+        $sql =  'SELECT DISTINCT(libelleLangue) FROM langue JOIN parler ON langue.idLangue = parler.idLangue ';
+        $sql .= 'JOIN destination ON destination.idDestination = parler.idDestination ';
         $sql .= 'WHERE destination.idDestination = \'' . $idPays . '\' ORDER BY libelleLangue';
         foreach  ($this->myPDO->query($sql) as $row) {
             array_push($languages, $row);
         }
+//        print_r($langes);
+        echo "\nCOUCOU : ";
+        echo $languages[0]["libelleLangue"];
+        echo " FIN\n";
         return $languages;
     }
 

@@ -1,4 +1,4 @@
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <meta charset="utf-8">
@@ -38,23 +38,23 @@
     <div class="container">
         <h4>Liste des destinations possibles</h4>
         <div class="searchArea">
-            <form id="searchDestination" action="../controleurs/ControllerDestinations.php" method="GET">
+            <form id="searchDestination" action="../controleurs/ControllerDestinations.php" method="POST">
                 <input type="text" name="search" class="searchTerm"
-                       placeholder="Rechercher une université, un mot-clé...">
+                       placeholder="Rechercher une université, un mot-clé..."/>
                 <br/>
                 <label for="spokenLanguage">Langue : </label>
                 <?php
                 foreach ($listeLangue as $rowLangue) {
-                    echo "<input type='checkbox' name='" . $rowLangue["idLangue"] . "' id='lang[]'/>" . $rowLangue["libelleLangue"] . "</option>";
+                    echo "<input type='checkbox' name='lang[]' value='" . $rowLangue["idLangue"] . "' />" . $rowLangue["libelleLangue"];
                 } ?>
                 <br/>
                 <label for="pays">Pays : </label>
                 <select name="pays" id="pays">
-                    <option value="allPays">Tous</option>
+                    <option value="Tous">Tous</option>
                     <?php
 
                     foreach ($listePays as $rowPays) {
-                        echo "<option value='" . $rowPays["pays"] . "'" . $rowPays . "'>" . $rowPays["pays"] . "</option>";
+                        echo "<option value='" . $rowPays["pays"] . "'>" . $rowPays["pays"] . "</option>";
                     } ?>
                 </select><br/>
                 <button type="submit" class="searchButton" onclick="rechercheDetaillee()">
@@ -64,45 +64,33 @@
         </div>
         <hr/>
         <div class="resultDestination">
-            <!-- TODO boucle for de parcours des resultats -->
-            <?php foreach ($listeDestinations
-
-            as $rowDesti) {
+            <?php foreach ($listeDestinations as $rowDesti) {
             // mise en forme CSS : fsDefault puis une couleur spécifique pour chaque pays
-            echo "<fieldset class='fsDefault' " . $rowDesti["pays"] . ">
+            echo "<fieldset class='fsDefault " . $rowDesti["pays"] . "'>
                         <legend>" . $rowDesti["pays"] . "</legend>";
             ?>
+
             <!-- logo aligné intérieur gauche -->
             <div class="logoRow">
-                <img src="../medias/images/<?= $rowDesti[idDestination] ?>.jpg" alt=<?= $rowDesti["nomEcole"] ?>/>
+                <img src="../medias/images/logo/<?= $rowDesti["idDestination"] ?>.png" alt=<?= $rowDesti["nomEcole"] ?>/>
             </div>
             <!-- premiere partie du texte alignée intérieur haut droite -->
             <div class="topTextRow"><?= $rowDesti["nomEcole"] ?></div>
             <!-- seconde partie intérieur bas droite -->
-            <!--            <div class="bottomTextRow">
-                Langue(s) : <?php  /*
-            for ($i = 0;
-            $i < sizeof($listeLangueByPays);
-            $i++) {
-            if ($i == sizeof($listeLangueByPays) - 1) {
-                echo $listeLangueByPays[i][libelleLangue];
-            } else {
-                echo $listeLangueByPays[i][libelleLangue] . ", ";
-            } */?>
--->
-        </div>
+            <div class="bottomTextRow">
+                <?php echo  $rowDesti["pays"] . "<br /> Durée  : " . $rowDesti["duree"] . " semaines <br/>" . $rowDesti["descriptif"]; ?>
 
-        <?php } ?>
+            <?php
+                    echo "</div></fieldset><br />";
+            }?>
+
 
     </div>
-    <p>Work In Progress</p>
 </div><!--container-->
 
 <?php include('Defaut/menu.phtml'); ?>
 
 <?php include('Defaut/footer.phtml'); ?>
-
-<script src="../js/destination.js"></script>
 </div><!--end wrapper-->
 
 </body>
