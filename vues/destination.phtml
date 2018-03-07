@@ -2,8 +2,9 @@
 <head>
 
     <meta charset="utf-8">
-    <title>International Mo3iLity | Connexion</title>
-    <meta name="description" content="Page de connexion à l'administrateur">
+    <title>International Mo3iLity | Destination</title>
+    <meta name="description"
+          content="Caractéristiques de la ville.">
     <meta name="author" content="Florian Louargant & Pierre Frugere">
 
     <!-- Le meta magique pour les appareils mobiles :)-->
@@ -12,12 +13,11 @@
     <!-- Font–––––––– -->
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-    <!-- css -->
+    <!--css-->
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- js -->
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/jquery-validation1.17.0.min.js"></script>
 
     <!--    TODO - voir l'utilité réellement-->
     <!--[if lt IE 9]>
@@ -36,35 +36,21 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Connexion Admin Page</h4>
-
-        <?php if (!empty($error_msg)) :?>
-        <div id="error">
-            <!-- error will be shown here ! -->
-            <div class="alert">
-                <span class="closebtn">&times;</span>
-                <p><b>Erreur ! </b><?= $error_msg ?></p>
-            </div>
-        </div>
-        <?php endif; ?>
-
-        <form action="../controleurs/ControllerConnexion.php" method="post">
-            <label for="login">Votre login : </label>
-            <input type="text" name="login" id="login" >
-            <label for="pwd">Votre mot de passe : </label>
-            <input type="password" name="pwd" id="pwd">
-            <input type="submit" id="submit" value="Connexion">
-        </form>
-
-        <p>Work In Progress</p>
+        <?php
+            if (!empty($_GET["desti"])) {
+                echo $_GET["desti"];
+            }
+        ?>
+        <!-- TODO vérifier validité de l'argument dans l'url -->
     </div><!--container-->
 
     <?php include('Defaut/menu.phtml'); ?>
 
     <?php include('Defaut/footer.phtml'); ?>
 
-    <script src="../js/connexion.js"></script>
+    <script src="../js/contact.js"></script>
     <script src="../js/alert-box.js"></script>
+
 </div><!--end wrapper-->
 
 </body>

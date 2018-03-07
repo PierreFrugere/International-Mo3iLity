@@ -38,7 +38,7 @@
     <div class="container">
         <h4>Liste des destinations possibles</h4>
         <div class="searchArea">
-            <form id="searchDestination" action="../controleurs/ControllerDestinations.php" method="POST">
+            <form id="searchDestination" action="../controleurs/ControllerListeDestinations.php" method="POST">
                 <input type="text" name="search" class="searchTerm"
                        placeholder="Rechercher une université, un mot-clé..."/>
                 <br/>
@@ -72,7 +72,9 @@
 
             <!-- logo aligné intérieur gauche -->
             <div class="logoRow">
-                <img src="../medias/images/logo/<?= $rowDesti["idDestination"] ?>.png" alt=<?= $rowDesti["nomEcole"] ?>/>
+                <a href="destination.php?desti=<?= $rowDesti["idDestination"] ?>">
+                    <img src="../medias/images/logo/<?= $rowDesti["idDestination"] ?>.png" alt=<?= $rowDesti["nomEcole"] ?>/>
+                </a>
             </div>
             <!-- premiere partie du texte alignée intérieur haut droite -->
             <div class="topTextRow"><?= $rowDesti["nomEcole"] ?></div>

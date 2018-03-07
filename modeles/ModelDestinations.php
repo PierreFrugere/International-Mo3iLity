@@ -28,6 +28,8 @@ class ModelDestinations
         // index de parcours des langues dans $listLang
         $i = 0;
 
+        // permet de savoir s'il y a déjà eu un critère pris en compte : pour écrire "WHERE" dans la rqt  si c'est le premier
+        //                                                                           "AND" si ce n'est pas le premier
         $isFirstCrit = true;
 
         // taille du tableau $listLang contenant les ID des langues seléctionnées
@@ -36,14 +38,16 @@ class ModelDestinations
         // découpage de la chaine de caractères en tableau de mots pour une recherche appropriée
         $words = explode(" ", $recherche);
 
+        // rqt sql dynamique en fonction des paramètres saisis par l'utilisaetur
         $sql = 'SELECT * FROM destination ';
 
-        /* Construction de la requête SQL en fonction des paramètres donnés */
+        /* Construction */
         // langue(s) parlée(s) choisie(s)
         if ($szLang <> 0) {
             $sql .= 'JOIN parler ON destination.idDestination = parler.idDestination ';
             $sql .= 'WHERE parler.idLangue IN (';
 
+            // ajout de chaque ID langue seléctionné par l'utilisateur, dans la rqt
             do {
                 $sql.= '\'' . $listLang[$i] . '\'';
                 $i++;
@@ -57,7 +61,7 @@ class ModelDestinations
             $isFirstCrit = false;
         }
 
-        // pays choisi
+        // pays choisi (choix unique)
         if ($pays <> "Tous") {
             // si un autre critère a été seléctionné auparavant, on concatène en fonction de la rqt précédente
             // sinon écrire clause WHERE
@@ -74,6 +78,7 @@ class ModelDestinations
             // sinon écrire clause WHERE
             $sql .= (($isFirstCrit)?'WHERE':'AND') . ' (destination.descriptif REGEXP ';
 
+            // ajout des mots clés à la rqt
             do {
                 $sql.= '\'' . $words[$i] . '\'';
                 $i++;
@@ -84,7 +89,6 @@ class ModelDestinations
 
             } while ($i < sizeof($words));
             $sql .= ') ';
-            $isFirstCrit = false;
         }
 
         // aucun critère séléctionné => renvoie toutes les destinations
