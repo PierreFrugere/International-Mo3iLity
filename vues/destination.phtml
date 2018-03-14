@@ -36,12 +36,89 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <?php
-            if (!empty($_GET["desti"])) {
-                echo $_GET["desti"];
-            }
-        ?>
-        <!-- TODO vérifier validité de l'argument dans l'url -->
+
+        <!-- Argument URL vérifié dans contrôleur : 404 si ERREUR -->
+        <h4><?=$infosDesti["nomEcole"]?></h4>
+        <br />
+        <h5><?=$infosDesti["pays"]?></h5>
+        <br /><br />
+
+        <div id="descrDesti">
+            <div id="txtDescr"><!-- aligné à gauche -->
+                <p><?=$infosDesti["descriptif"]?></p>
+            </div><!--txtDescr-->
+            <div id="resume"><!-- aligné à droite -->
+                <img id="imgResume" src="../medias/images/logo/<?=$infosDesti["idDestination"]?>.png" alt="<?=$infosDesti["nomEcole"]?>">
+                <br />
+                <table>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Langue(s) parlée(s)</th>
+                        <td><?php foreach($spokenLang as $aLangage) { echo $aLangage["libelleLangue"]." "; }?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Durée</th>
+                        <td><?=$infosDesti["duree"]?></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Choix obligatoire</th>
+                        <td><?php echo ($infosDesti["estObligatoire"]==1)?"Oui":"Non"?></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!--resume-->
+        </div><!--descrDesti-->
+        <br /> <br />
+        <div id="temoignages">
+            <h4>Témoignages</h4>
+            <!-- parcours des témoignages -->
+            <?php
+            $cpt = 0; // compteur affichage des thèmes
+            if (is_null($temoignageDesti[0]["idTemoignage"])) {
+                // aucun témoignage
+            ?>
+                <div class="rowTemoignage"><p>Il n'y a pas encore de témoignage pour cette destination.</p></div>
+                <?php
+            } else {// if
+                foreach ($temoignageDesti as $rowTemoignage) { ?>
+                    <div class="rowTemoignage">
+
+                        <p> De <b><?=$rowTemoignage["nomVoyageur"]?></b>, le <?php echo date_format(new DateTime($rowTemoignage["dateTemoignage"]),'d/m/Y');?> : </p>
+                        <div class="noteMoyenne">Note moyenne : <?=round($rowTemoignage["moyenne"],1)?>/10</div>
+                        <table>
+                            <tbody>
+                            <?php foreach ($infosTemoignage as $rowInfosTemoignage) { ?>
+                                <tr>
+                                    <th scope="row"><a href="#<?=$rowInfosTemoignage["idInfos"]?>"><?=$libellesTheme[$cpt]["nomTheme"]?></a></th>
+                                    <td><?=$rowInfosTemoignage["note"]?></td>
+                                </tr>
+                            <?php $cpt++; } ?>
+                            </tbody>
+                        </table>
+                        <br />
+                        <!-- Détail pour chaque thématique -->
+                <?php $cpt = 0; foreach ($infosTemoignage as $rowInfosTemoignage) { ?>
+                    <div class="rowTheme">
+                        <table>
+                            <tbody>
+                            <tr class="rowThemeDetail">
+                                <td id="<?=$rowInfosTemoignage["idInfos"]?>"><?=$libellesTheme[$cpt]["nomTheme"]?></td>
+                                <td><?=$rowInfosTemoignage["note"]?></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <?=$rowInfosTemoignage["texteDescriptif"]?>
+                        <br /><br />
+                    </div><!--rowTheme-->
+                <?php $cpt++; }?>
+
+                <?php
+                } // for
+            } // if-else?>
+                </div> <!--rowTemoignage-->
+        </div><!-- temoignages -->
+
+
     </div><!--container-->
 
     <?php include('Defaut/menu.phtml'); ?>

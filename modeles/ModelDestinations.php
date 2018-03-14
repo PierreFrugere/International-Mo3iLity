@@ -101,6 +101,58 @@ class ModelDestinations
         return $destiResult;
     }
 
+    /**
+     * Renvoie la destination pour l'ID fourni
+     * @param $id PK de la destination
+     */
+    public function getDestinationById($id) {
+        $stmt = $this->myPDO->prepare("SELECT * FROM destination WHERE idDestination=:idDest");
+        $stmt->execute(array(":idDest" => $id));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $count = $stmt->rowCount();
+        if ($count <= 0) {
+            return "404";
+        }
+        return $row;
+    }
+
+    /**
+     * Renvoie le temoignage pour l'ID fourni OU "0" si aucun témoignage
+     * @param $id PK de la destination
+     */
+    public function getTemoignageById($id) {
+        $sql = "SELECT T.idTemoignage, T.nomVoyageur, T.dateTemoignage, T.idDestination, AVG(IFNULL(I.note,0)) AS moyenne ";
+        $sql .= "FROM temoignage T JOIN infos I ON T.idTemoignage = I.idTemoignage WHERE idDestination=:idDest ORDER BY dateTemoignage";
+        $stmt = $this->myPDO->prepare($sql);
+        $stmt->execute(array(":idDest" => $id));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    /**
+     * Renvoie les infos d'un temoignage pour l'ID fourni
+     * @param $id PK de la destination
+     */
+    public function getInfosTemoignageByIdDesti($id) {
+        $sql = "SELECT * FROM infos I JOIN temoignage T ON T.idTemoignage = I.idTemoignage WHERE T.idDestination=:idDest ORDER BY I.idTheme";
+        $stmt = $this->myPDO->prepare($sql);
+        $stmt->execute(array(":idDest" => $id));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    /**
+     * Renvoie les libellés des thèmes dans l'ordre
+     */
+    public function getLibellesTheme() {
+        $stmt = $this->myPDO->prepare("SELECT nomTheme FROM theme ORDER BY idTheme");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 
     /**
      * @return $allPays : tableau contenant la liste des pays
@@ -124,6 +176,14 @@ class ModelDestinations
             array_push($allLanguages, $row);
         }
         return $allLanguages;
+    }
+
+    public function getListeLangueById($id) {
+        $sql = "SELECT L.libelleLangue FROM langue L JOIN parler P ON L.idLangue = P.idLangue WHERE P.idDestination=:idDest ORDER BY libelleLangue";
+        $stmt = $this->myPDO->prepare($sql);
+        $stmt->execute(array(":idDest" => $id));
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 
     /**
