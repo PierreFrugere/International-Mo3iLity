@@ -36,61 +36,77 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Liste des destinations possibles</h4>
-        <div class="searchArea">
+        <h1>Liste des destinations possibles</h1>
+        <br />
+        <p><center>Renseignez différents critères ci-dessous afin d'affiner votre recherche.</center></p>
+        <div id="searchArea">
             <form id="searchDestination" action="../controleurs/ControllerListeDestinations.php" method="POST">
-                <input type="text" name="search" class="searchTerm"
-                       placeholder="Rechercher une université, un mot-clé..."/>
+                <div>
+                    <input type="text" name="search" class="searchTerm" placeholder="Rechercher une université, un mot-clé..."/>
+                </div>
                 <br/>
-                <label for="spokenLanguage">Langue : </label>
-                <?php
-                foreach ($listeLangue as $rowLangue) {
-                    echo "<input type='checkbox' name='lang[]' value='" . $rowLangue["idLangue"] . "' />" . $rowLangue["libelleLangue"];
-                } ?>
-                <br/>
-                <label for="pays">Pays : </label>
-                <select name="pays" id="pays">
-                    <option value="Tous">Tous</option>
+                <div>
+                    <label for="spokenLanguage">Langue : </label>
                     <?php
-
-                    foreach ($listePays as $rowPays) {
-                        echo "<option value='" . $rowPays["pays"] . "'>" . $rowPays["pays"] . "</option>";
+                    foreach ($listeLangue as $rowLangue) {
+                        echo "<label class='cb_container'>". $rowLangue["libelleLangue"];
+                        echo "<input type='checkbox' name='lang[]' value='" . $rowLangue["idLangue"] . "' /><span class='cb_checkmark'></span>" ;
+                        echo "</label>";
                     } ?>
-                </select><br/>
-                <button type="submit" class="searchButton" onclick="rechercheDetaillee()">
-                    Lancer la recherche
-                </button>
+                </div>
+                <br/>
+                <div>
+                    <label for="pays" style="vertical-align: middle;">Pays : </label>
+                    <span class="cbb_pays">
+                        <select name="pays">
+                            <option value="Tous">Tous</option>
+                            <?php
+
+                            foreach ($listePays as $rowPays) {
+                                echo "<option value='" . $rowPays["pays"] . "'>" . $rowPays["pays"] . "</option>";
+                            } ?>
+                        </select>
+                    </span>
+                </div>
+                <br/>
+                <div>
+                    <button type="submit" class="searchButton" onclick="rechercheDetaillee()">Lancer la recherche</button>
+                </div>
             </form>
+            <hr />
         </div>
-        <hr/>
         <div class="resultDestination">
             <?php foreach ($listeDestinations as $rowDesti) {
             // mise en forme CSS : fsDefault puis une couleur spécifique pour chaque pays
             echo "<fieldset class='fsDefault " . $rowDesti["pays"] . "'>
-                        <legend>" . $rowDesti["pays"] . "</legend>";
+                        <legend><h2>" . $rowDesti["pays"] . "</h2></legend>";
             ?>
 
-            <!-- logo aligné intérieur gauche -->
-            <div class="logoRow">
-                <a href="destination.php?desti=<?= $rowDesti["idDestination"] ?>">
-                    <img src="../medias/images/logo/<?= $rowDesti["idDestination"] ?>.png" alt=<?= $rowDesti["nomEcole"] ?>/>
-                </a>
-            </div>
-            <!-- premiere partie du texte alignée intérieur haut droite -->
-            <div class="topTextRow"><?= $rowDesti["nomEcole"] ?></div>
-            <!-- seconde partie intérieur bas droite -->
-            <div class="bottomTextRow">
-                <?php echo  $rowDesti["pays"] . "<br /> Durée  : " . $rowDesti["duree"] . " semaines <br/>" . $rowDesti["descriptif"]; ?>
+            
+            <div class="fscontent">
+                <!-- logo aligné intérieur gauche -->
+                <div class="logoRow">
+                    <a href="destination.php?desti=<?= $rowDesti["idDestination"] ?>">
+                        <img src="../medias/images/logo/<?= $rowDesti["idDestination"] ?>.png" alt=<?= $rowDesti["nomEcole"] ?>/>
+                    </a>
+                </div>
+                <!-- premiere partie du texte alignée intérieur haut droite -->
+                <div class="rightContent">
+                <div class="topTextRow"><a href="destination.php?desti=<?= $rowDesti["idDestination"] ?>"><?= $rowDesti["nomEcole"] ?></a></div>
+                <input type="button" class="btn-voirDetailDesti" onclick="location.href='destination.php?desti=<?= $rowDesti["idDestination"] ?>';" value="Voir" />
+                <!-- seconde partie intérieur bas droite -->
+                <div class="bottomTextRow">
+                    <?php echo  "<br /><p class='txt-oblic'>Pays : " . $rowDesti["pays"] . "</p><p class='txt-oblic'>Durée  : " . $rowDesti["duree"] . " semaines </p>" . 
+                    "<br /><br/>" . $rowDesti["descriptif"]; ?>
 
-            <?php
-                    echo "</div></fieldset><br />";
-            }?>
+                <?php
+                        echo "</div></div></fieldset><br />";
+                }?>
+
 
 
     </div>
 </div><!--container-->
-
-<?php include('Defaut/menu.phtml'); ?>
 
 <?php include('Defaut/footer.phtml'); ?>
 </div><!--end wrapper-->

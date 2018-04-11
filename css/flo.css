@@ -1,0 +1,385 @@
+/* ------------------------------------------------------------------ FLO DESTI --------------------------------------*/
+/* ------------------- DESTINATIONS ------------------- */
+#searchArea {
+    border-bottom: 3px solid #334257;
+}
+#searchArea div {
+    display:block;
+    text-align: center;
+}
+
+/* barre de recherche */
+.searchTerm {
+    width: 30%;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #e1dad6;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+
+/* checkbox langues */
+.cb_container {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    margin-left: 16px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.cb_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.cb_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 1px solid #D97565;
+}
+
+/* On mouse-over, add a grey background color */
+.cb_container:hover input ~ .cb_checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked */
+.cb_container input:checked ~ .cb_checkmark {
+    background-color: #D97565;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.cb_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.cb_container input:checked ~ .cb_checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.cb_container .cb_checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* boite à liste - combo box */
+.cbb_pays {
+    display: inline-block;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   background: url(img/cbb_fleche.png) no-repeat 96% 0; 
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+   background-color:#D97565;
+   vertical-align: middle;
+   margin-left: 25px;
+}
+
+.cbb_pays select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px;
+   width: 268px;
+}
+
+
+/* fieldset destinations result */
+.fsdefault {
+    margin-left:auto;
+    margin-right: auto;
+    background-color: #9FDEB0;
+    border: 2px solid #3FA63D;
+    width:75%;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;  
+    border-radius:50px;  
+    padding-bottom: 15px;
+}
+
+.fsdefault legend {
+    margin-left:55px;
+}
+
+.logoRow {
+    width:220px;
+    height:200px;
+}
+
+.logoRow img {
+  width:100%;
+  height:100%;
+  display:block;
+  position:relative;
+}
+
+.fscontent {
+    margin: 30px;
+}
+
+.rightContent {
+    display: inline;
+    position:relative;
+    float:left;
+}
+
+.txt-oblic {
+    display: inline;
+    font-style: italic;
+    margin-left: 80px;
+}
+
+.topTextRow {
+    display: inline; /* evite retour à la ligne apres div --> bouton */
+    font-weight: bold;
+
+}
+
+.btn-voirDetailDesti {
+    float:right;
+    margin-right: 40px;
+    height: 50px;
+    width: 100px;
+}
+
+/* ------------------- DETAIL D'UNE DESTINATION ------------------- */
+h5 {
+    text-align: center;
+}
+
+/* div englobant txtDescr et resume 
+#descrDesti {
+    float: left;
+    position: relative;
+}*/
+
+#txtDescr {
+    display:inline-block;
+    width:55%;
+    margin-left:25px;
+    vertical-align: top;
+}
+
+#txtDescr p {
+    display: inline;
+    text-align: justify;
+}
+
+#resume {
+    display: inline-block;
+    width: 30%;
+    margin-right: 25px;
+    float:right;
+    text-align:center;
+    border-radius: 15px;
+    padding:15px; 
+    border: rgb(70,86,230) 2px solid;
+    background-color: rgba(70,86,230,0.3);
+}
+
+/* tableau résumé sous l'image */
+#tbResume {
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#tbResume td, th {
+    padding:7px;
+    text-align: center;
+}
+
+#tbResume th {
+    font-weight: bold;
+}
+
+/* logo université */
+#imgResume {
+    width:75%;
+    height:30%;
+}
+
+#descrDesti {
+    min-height: 460px;
+}
+
+/* div témoignages */ 
+#temoignages {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.rowTheme {
+    background-color: rgba(178,104,94,0.5); /* couleur : #b2685e */
+    margin-bottom:20px;
+    padding: 13px;
+}
+
+/* tableau de notes */
+#tbNotes {
+    margin-left:auto;
+    margin-right:auto;
+    border-collapse: collapse;
+    text-align:center;
+    width:28%;
+}
+
+#tbNotes td {
+    padding: 10px;
+}
+
+#tbNotes tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#tbNotes tr:nth-child(odd){
+    background-color: #d6d6d6;
+}
+
+.libNoteMoyenne {
+    border: 2px solid #595959;
+    border-right: none;
+    font-weight: bold;
+}
+
+.noteMoyenne {
+    border: 2px solid #595959;
+    border-left: none;
+    font-weight: bold;
+}
+
+/* cellule cachée contenant la valeur "/10" */
+.sansMEF {
+    background-color: white;
+}
+
+/* notes par thèmes */ 
+.cellNoteTheme {
+    vertical-align: middle;
+    padding:50px;
+    text-align: center;
+    font-size: 26px;
+    width: 30px;
+    height: 90px;
+    max-height: 90px;
+    background-color: rgba(70,86,230,0.5);
+    border-radius: 85px;
+}
+
+.cellTitleTheme {
+    padding:13px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cellTextTheme {
+    padding:13px;
+}
+
+
+/* ------------------- FAIRE SES VOEUX ------------------- */
+/* formulaire de choix */ 
+#formVoeux {
+    text-align: center;
+}
+
+
+/* tableau des voeux */
+.grid {
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+}
+
+/* premiere colonne (indice) */
+.index {
+    width: 5%;
+}
+
+/* lieu */
+.thLieux {
+    width: 10%;
+    border-right: none !important;
+}
+
+
+/* école */
+.thEcole {
+    width: 70%;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* durée */ 
+.thDuree {
+    width: 15%;
+    border-left: none !important;
+}
+
+/* cellule nom école MEF gras */
+.tdEcole {
+    font-weight: bold;
+    text-align: left !important;
+    padding-left: 25px !important;
+}
+
+.grid td {
+    text-align: center;
+    border-bottom: 1px solid black;
+    vertical-align: middle;
+    height:20px;
+    padding: 5px;
+}
+
+.grid th {
+    font-weight: bold;
+    border: 2px solid black;
+    vertical-align: middle;
+}
+
+/* cellule contenant le numéro d'ordre du voeux */
+.tdIndex {
+    border : 1px solid black;
+}
+
+/* cellules durée  MEF border right */
+.tdDuree {
+    border-right: 1px solid black;
+}
+
+/* MEF fond vert clair destination obligatoire */
+.obligatoire {
+    background-color: #91EBDD;
+}

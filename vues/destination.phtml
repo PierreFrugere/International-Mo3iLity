@@ -44,13 +44,13 @@
         <br /><br />
 
         <div id="descrDesti">
-            <div id="txtDescr"><!-- aligné à gauche -->
+            <span id="txtDescr"><!-- aligné à gauche -->
                 <p><?=$infosDesti["descriptif"]?></p>
-            </div><!--txtDescr-->
-            <div id="resume"><!-- aligné à droite -->
+            </span><!--txtDescr-->
+            <span id="resume"><!-- aligné à droite -->
                 <img id="imgResume" src="../medias/images/logo/<?=$infosDesti["idDestination"]?>.png" alt="<?=$infosDesti["nomEcole"]?>">
                 <br />
-                <table>
+                <table id="tbResume">
                     <tbody>
                     <tr>
                         <th scope="row">Langue(s) parlée(s)</th>
@@ -66,7 +66,7 @@
                     </tr>
                     </tbody>
                 </table>
-            </div><!--resume-->
+            </span><!--resume-->
         </div><!--descrDesti-->
         <br /> <br />
         <div id="temoignages">
@@ -77,15 +77,14 @@
             if (is_null($temoignageDesti[0]["idTemoignage"])) {
                 // aucun témoignage
             ?>
-                <div class="rowTemoignage"><p>Il n'y a pas encore de témoignage pour cette destination.</p></div>
+                <div class="rowTemoignage"><p>Il n'y a pas encore de témoignage pour cette destination.</p><br /></div>
                 <?php
             } else {// if
                 foreach ($temoignageDesti as $rowTemoignage) { ?>
                     <div class="rowTemoignage">
 
-                        <p> De <b><?=$rowTemoignage["nomVoyageur"]?></b>, le <?php echo date_format(new DateTime($rowTemoignage["dateTemoignage"]),'d/m/Y');?> : </p>
-                        <div class="noteMoyenne">Note moyenne : <?=round($rowTemoignage["moyenne"],1)?>/10</div>
-                        <table>
+                        <p> De <b><?=$rowTemoignage["nomVoyageur"]?></b>, le <?php echo date_format(new DateTime($rowTemoignage["dateTemoignage"]),'d/m/Y');?> : </p>                       
+                        <table id="tbNotes">
                             <tbody>
                             <?php foreach ($infosTemoignage as $rowInfosTemoignage) { ?>
                                 <tr>
@@ -93,22 +92,26 @@
                                     <td><?=$rowInfosTemoignage["note"]?></td>
                                 </tr>
                             <?php $cpt++; } ?>
+                             <tr>
+                                <th class="libNoteMoyenne" scope="row">Note moyenne</th>
+                                <td class="noteMoyenne"><?=round($rowTemoignage["moyenne"],1)?></td><td class="sansMEF">/10</td>
                             </tbody>
                         </table>
                         <br />
                         <!-- Détail pour chaque thématique -->
                 <?php $cpt = 0; foreach ($infosTemoignage as $rowInfosTemoignage) { ?>
                     <div class="rowTheme">
-                        <table>
+                        <table style="table-layout: fixed;">
                             <tbody>
                             <tr class="rowThemeDetail">
-                                <td id="<?=$rowInfosTemoignage["idInfos"]?>"><?=$libellesTheme[$cpt]["nomTheme"]?></td>
-                                <td><?=$rowInfosTemoignage["note"]?></td>
+                                <td class="cellNoteTheme" rowspan="2"><?=$rowInfosTemoignage["note"]?></td>
+                                <td class="cellTitleTheme" id="<?=$rowInfosTemoignage["idInfos"]?>"><?=$libellesTheme[$cpt]["nomTheme"]?></td>
+                            </tr>
+                            <tr class="rowThemeTxtDescr">
+                                <td class="cellTextTheme"><?=$rowInfosTemoignage["texteDescriptif"]?></td>
                             </tr>
                             </tbody>
                         </table>
-                        <?=$rowInfosTemoignage["texteDescriptif"]?>
-                        <br /><br />
                     </div><!--rowTheme-->
                 <?php $cpt++; }?>
 
