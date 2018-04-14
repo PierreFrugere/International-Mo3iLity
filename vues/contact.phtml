@@ -36,13 +36,14 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Contact Page</h4>
+        <h2>CONTACT</h2>
         <div class="form-style">
-            <form method="post" class="myform" action="/Form/contact_me.php">
-                <input type="text" name="name" placeholder="Your Name" required><br>
-                <input type="email" name="email" placeholder="Your Email" required><br>
-                <textarea rows="4" cols="20" name="message" placeholder="Your Message"></textarea><br>
-                <input type="submit" name="send" value="Send"> <span class="output_message"></span>
+            Si vous souhaitez nous contacter, veuillez remplir le formulaire ci-dessous : <br /><br />
+            <form method="post" class="contactForm" action="/Form/contact_me.php">
+                <input class="inName" type="text" name="name" placeholder="Nom" required><br>
+                <input class="inEmail" type="email" name="email" placeholder="Email" required><br>
+                <textarea class="taMessage" rows="4" cols="20" name="message" placeholder="Message"></textarea><br>
+                <input class="btDefault" type="submit" name="send" value="Envoyer"> <span class="output_message"></span>
             </form>
         </div>
     </div><!--container-->

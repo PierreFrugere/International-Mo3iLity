@@ -36,7 +36,7 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h1>Liste des destinations possibles</h1>
+        <h2>Liste des destinations possibles</h2>
         <br />
         <p><center>Renseignez différents critères ci-dessous afin d'affiner votre recherche.</center></p>
         <div id="searchArea">
@@ -70,10 +70,10 @@
                 </div>
                 <br/>
                 <div>
-                    <button type="submit" class="searchButton" onclick="rechercheDetaillee()">Lancer la recherche</button>
+                    <button type="submit" class="btDefault" onclick="rechercheDetaillee()">Lancer la recherche</button>
                 </div>
             </form>
-            <hr />
+            <br />
         </div>
         <div class="resultDestination">
             <?php foreach ($listeDestinations as $rowDesti) {
@@ -85,11 +85,11 @@
             
             <div class="fscontent">
                 <!-- logo aligné intérieur gauche -->
-                <div class="logoRow">
+                <span class="logoRow">
                     <a href="destination.php?desti=<?= $rowDesti["idDestination"] ?>">
                         <img src="../medias/images/logo/<?= $rowDesti["idDestination"] ?>.png" alt=<?= $rowDesti["nomEcole"] ?>/>
                     </a>
-                </div>
+                </span>
                 <!-- premiere partie du texte alignée intérieur haut droite -->
                 <div class="rightContent">
                 <div class="topTextRow"><a href="destination.php?desti=<?= $rowDesti["idDestination"] ?>"><?= $rowDesti["nomEcole"] ?></a></div>
@@ -106,6 +106,8 @@
 
 
     </div>
+
+
 </div><!--container-->
 
 <?php include('Defaut/footer.phtml'); ?>

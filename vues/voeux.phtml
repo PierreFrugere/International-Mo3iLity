@@ -36,9 +36,9 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Voeux Page</h4> <br />
+        <h2>FAIRE SES VOEUX </h2> <br />
 
-        <form id="formVoeux" method="post" id="voeux-form" onsubmit="return alert('Cette fonctionnalité est en cours de développement.');">
+        <form id="formVoeux" method="post" onsubmit="return alert('Cette fonctionnalité est en cours de développement.');">
             <label for="school">Ecole : </label>
             <input type="radio" id="groupRodez" name="group" value="Rodez" onchange="afficherGroupe();" checked />
             <label for="groupRodez">3iL Rodez</label>
@@ -65,7 +65,8 @@
                     <option value="groupB">B</option>
                 </select><br /><br />
             </div>
-            <p>Seuls les sept premiers voeux seront retenus. Ils doivent contenir les destinations partenaires avec l'école 3iL (fond vert). Veuillez ordonner vos voeux ci-dessous : </p><br />
+            <p>Seuls les sept premiers voeux seront retenus. Ils doivent contenir les destinations partenaires avec l'école 3iL (fond coloré).<br /><br />
+            Veuillez ordonner vos voeux ci-dessous : </p>
 
             <!-- tableau drag & drop -->
             <table id="sort" class="grid" title="ListeDesVoeux">
@@ -100,7 +101,7 @@
                 </tbody>
             </table>
             <br />
-            <input type="submit" id="submit" value="Valider"/>
+            <input type="submit" class="btDefault" id="submitVoeux" value="Valider"/>
             <!-- TODO action d'envoi de formulaire (ne pas récupérer le groupe si l'élève vient de 3iL Limoges) -->
             </p>
         </form>

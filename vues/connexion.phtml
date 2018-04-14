@@ -36,7 +36,7 @@
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h4>Connexion Admin Page</h4>
+        <h2>ADMINISTRATION</h2>
 
         <?php if (!empty($error_msg)) :?>
         <div id="error">
@@ -47,18 +47,23 @@
             </div>
         </div>
         <?php endif; ?>
-
-        <form action="../controleurs/ControllerConnexion.php" method="post">
-            <label for="login">Votre login : </label>
-            <input type="text" name="login" id="login" >
-            <label for="pwd">Votre mot de passe : </label>
-            <input type="password" name="pwd" id="pwd">
-            <input type="submit" id="submit" value="Connexion">
-        </form>
-
-        <p>Work In Progress</p>
+        <div class="adminForm">
+            <form action="../controleurs/ControllerConnexion.php" method="post">
+                <table>
+                    <tr>
+                        <td><label for="login">Login : </label></td><td><input type="text" name="login" id="login" ></td>
+                    </tr>
+                    <tr>
+                        <td><label for="pwd">Mot de passe : </label></td><td><input type="password" name="pwd" id="pwd"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" id="submit" value="Connexion"></td>
+                    </tr>
+                </table>
+            </form>
+        </div><!--adminForm-->
     </div><!--container-->
-
+<br /><br />
     <?php include('Defaut/footer.phtml'); ?>
 
     <script src="../js/connexion.js"></script>

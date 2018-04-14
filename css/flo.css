@@ -1,3 +1,456 @@
+/* Reinitialisation du CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Début du vrai css TODO - voir code à splitter en 2 */
+
+body {
+    font: 16px/1.4em 'PT Sans', sans-serif;;
+    color: #1c1c1c;
+}
+
+p,
+ul {
+    margin: 0 0 1.5em;
+}
+
+ul {
+    list-style: disc;
+    padding: 0 0 0 20px;
+}
+
+a {
+    color: #1D745A;
+}
+
+
+/* Déclaration des polices */
+@font-face {
+font-family: "Travelling";
+src: url('../fonts/Travelling.ttf');
+}
+
+@font-face {
+font-family: "Cantarell";
+src: url('../fonts/Cantarell-Regular_0.ttf');
+}
+ 
+/* Déclaration de la police version "gras" */
+@font-face {
+font-family: "Cantarell-Bold";
+font-weight: bold;
+src: url('../fonts/Cantarell-Bold_0.ttf');
+}
+
+/* Déclaration de la police version "oblique" */
+@font-face {
+font-family: "Cantarell-Oblique";
+font-weight: oblique;
+src: url('../fonts/Cantarell-Oblique_0.ttf');
+}
+
+body {
+    font-family: Cantarell;
+    background-color: #e1dad6;
+}
+
+/*layout*/
+
+.wrapper {
+    margin: 10px;
+    background-color: #ffffff;
+}
+
+article {
+    border-bottom: 1px solid #d8d8d8;
+    padding: 10px 20px 0 20px;
+    margin: 10px 0;
+}
+
+/*header*/
+
+header {
+    background: #ffffff;
+    padding: 15px 20px;
+    font-family: Travelling;
+    border-bottom: 3px solid #d97565;
+}
+
+/*shorter clearfix http://nicolasgallagher.com/micro-clearfix-hack/*/
+header:before,
+header:after {
+    content:"";
+    display:table;
+}
+
+header:after {
+    clear:both;
+}
+
+.header-left {
+    text-align:center;
+}
+
+footer {
+    background-color: #2e394c;
+    font-family: Cantarell-Oblique;
+    text-align: center;
+    font-size: 14px;
+    color: #e1dad6;
+    padding: 50px 0px;
+}
+
+
+/* Titres */
+h1 {
+    font-family: Travelling;
+    text-align: center;
+    font-size: 30px;
+    color: #2e394c;
+    /* margin: 10px ; */
+}
+
+h2 {
+    font-family: Travelling;
+    text-align: center;
+    font-size: 26px;
+    letter-spacing: 0.1em;
+    color: #2e394c;
+    margin: 10px ;
+    line-height: 1.4em;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: Travelling;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 0.2em;
+    color: #2e394c;
+    margin: 10px ;
+}
+
+h4 {
+    font-family: Travelling;
+    text-align: center;
+    font-size: 15px;
+    color: #2e394c;
+    margin: 10px ;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+header {
+    zoom:1;
+}
+
+h1.logo a {
+    color: #2e394c;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 35px;
+    line-height: 22px;
+    float: left;
+    letter-spacing: 0.2em;
+}
+
+h1.logo a img {
+    margin-right: 20px;
+}
+
+a.to_nav {
+    float: right;
+    color: #fff;
+    background: #4e4e4e;
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 22px;
+    height: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+a.to_nav:hover,
+a.to_nav:focus {
+    color: #1c1c1c;
+    background: #ccc;
+
+}
+
+/*menu*/
+
+#primary_nav ul {
+    list-style: none;
+    padding: 5px 0;
+}
+
+#primary_nav li a {
+    display: block;
+    padding: 0 20px;
+    color: #2e394c;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size:24px;
+    letter-spacing: 0.05em;
+    line-height: 2em;
+    height: 2em;
+    border-bottom: 1px solid #383838;
+    background-color: #fff;
+}
+
+#primary_nav li:last-child a {
+    border-bottom: none;
+}
+
+#primary_nav li a:hover,
+#primary_nav li a:focus {
+    color: #1c1c1c;
+    background: rgba(204, 204, 204, 0.8);
+}
+
+/*pied de page*/
+
+
+
+
+@media only screen and (min-width: 1100px) {
+
+    a.to_nav {
+        display: none;
+    }
+
+    .wrapper {
+        position: relative;
+        margin: 10px;
+    }
+
+    #primary_nav {
+        font-family: Travelling;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        background: none;
+    }
+
+    #primary_nav li {
+        display: inline;
+    }
+
+    #primary_nav li a {
+        float: left;
+        border: none;
+        padding: 0 10px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+
+    #primary_nav li.top {
+        display: none;
+    }
+}
+
+/** Slider */
+.slider-content {
+    margin:auto
+}
+
+.slider-display-container {
+    position:relative
+}
+
+.slider-display-container:hover {
+    display:block
+}
+
+.slider-display-bottom {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%)
+}
+
+.slider-large {
+    font-size:18px!important
+}
+
+.slider-display-middle-bottom {
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%)
+}
+
+.slider-container:after,.slider-container:before {
+    content:"";
+    display:table;
+    clear:both
+}
+
+.slider-container {
+    padding:0.01em 16px
+}
+
+.slider-padding-16 {
+    padding-top:16px!important;
+    padding-bottom:16px!important
+}
+
+.slider-black {
+    color:#d8d8d8!important;
+    background-color:#1c1c1c!important
+}
+
+.slider-button {
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap
+}
+
+.slider-button{
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+
+.slider-button:disabled {
+    cursor:not-allowed;
+    opacity:0.3
+}
+
+.slider-display-left {
+    position:absolute;
+    top:50%;
+    left:0%;
+    transform:translate(0%,-50%);
+    -ms-transform:translate(-0%,-50%)
+}
+
+.slider-display-right {
+    position:absolute;
+    top:50%;
+    right:0%;
+    transform:translate(0%,-50%);
+    -ms-transform:translate(0%,-50%)
+}
+
+/* texte descriptif filigrane sur image slider */
+.descrImage {
+    position:absolute;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    color: #f1f1f1;
+    padding: 20px 30px 50px 30px;
+    display: block;
+    font-size:18px;
+}
+
+/* texte présentation site 3iL */
+.presentationTxt p {
+    text-align: center;
+    margin:20px;
+    padding: 20px;
+    font-size:22px;
+    line-height: 2;
+}
+
+/** Alert box */
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+}
+
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
 /* ------------------------------------------------------------------ FLO DESTI --------------------------------------*/
 /* ------------------- DESTINATIONS ------------------- */
 #searchArea {
@@ -101,7 +554,7 @@
    height: 29px;
    overflow: hidden;
    width: 240px;
-   background-color:#D97565;
+   background-color:#C3ABA7;
    vertical-align: middle;
    margin-left: 25px;
 }
@@ -134,35 +587,33 @@
 }
 
 .logoRow {
-    width:220px;
-    height:200px;
+    width:30%;
 }
 
 .logoRow img {
-  width:100%;
-  height:100%;
-  display:block;
-  position:relative;
+    width:20%;
+    height:25%;
 }
 
 .fscontent {
     margin: 30px;
+    display: inline-block;
 }
 
 .rightContent {
     display: inline;
-    position:relative;
-    float:left;
+    float:right;
+    width:75%;
 }
 
 .txt-oblic {
-    display: inline;
+    display: inline-block;
     font-style: italic;
-    margin-left: 80px;
+    margin-left: 20px;
 }
 
 .topTextRow {
-    display: inline; /* evite retour à la ligne apres div --> bouton */
+    display: inline-block; /* evite retour à la ligne apres div --> bouton */
     font-weight: bold;
 
 }
@@ -170,8 +621,22 @@
 .btn-voirDetailDesti {
     float:right;
     margin-right: 40px;
-    height: 50px;
-    width: 100px;
+    height: 40px;
+    width: 75px;
+    background-color: #2479D9;
+    color: white;
+    font-size: 16px;
+    border:0px;
+    border-radius: 90px;
+    font-family: inherit;
+    padding: 5px 10px 5px 10px; /* haut droit bas gauche */
+
+}
+
+.btn-voirDetailDesti:hover {
+    background-color: rgba(36,121,217,0.8);
+    cursor: pointer;
+
 }
 
 /* ------------------- DETAIL D'UNE DESTINATION ------------------- */
@@ -315,6 +780,9 @@ h5 {
     text-align: center;
 }
 
+#formVoeux p {
+    padding:20px;
+}
 
 /* tableau des voeux */
 .grid {
@@ -382,4 +850,103 @@ h5 {
 /* MEF fond vert clair destination obligatoire */
 .obligatoire {
     background-color: #91EBDD;
+}
+
+/* ----------------- FORMULAIRE DE CONTACT ------------------ */
+.form-style {
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #91EBDD;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:40%;
+    padding: 15px;
+    border-radius: 35px;
+}
+
+.contactForm input {
+    margin-bottom: 10px;
+}
+
+.contactForm textarea {
+  height:100px;
+  margin-bottom:10px;
+}
+
+.contactForm input, textarea {
+    padding: 15px 10px 10px;
+    background-color: #eee;
+    border-radius: 15px;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    width:50%;
+    max-width: 500px;
+}
+
+/* ----------------- BOUTONS ------------------ */
+.btDefault {
+    border-radius: 25px;
+    color:white;
+    background-color: #d97565 !important;
+    font-size: 20px;
+    font-family: inherit;
+    padding: 5px 10px 5px 10px; /* haut droit bas gauche */
+}
+
+.btDefault:hover {
+    background-color: rgba(217,117,101,0.8) !important; /* orange : #d97565 avec transparence */ 
+    cursor: pointer;
+}
+
+/* -------------- ADMINISTRATION ------------------ */
+.adminForm {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #871705; /* rouge bordeaux */
+    padding: 15px 10px 10px;
+    border-radius: 15px;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    width:30%;
+    max-width: 500px;
+    min-height:140px;
+    font-size: 20px;
+}
+
+.adminForm table {
+    text-align: center;
+    width:100%;
+}
+
+.adminForm tr {
+    height:40px;
+}
+
+.adminForm input {
+    border-radius: 90px;
+    padding-top: 5px;
+    width: 80%;
+    padding-left: 8px;
+}
+
+.adminForm label {
+    color: #d97565 ; /* écriture orange sur fond rouge bordeaux */
+font-weight: bold;
+}
+/* bouton connexion */
+#submit {
+margin-top:5px;
+width:30%;
+background-color: #450400; /* rouge bordeaux plus foncé */
+color:white;
+
+height:35px;
+border:none;    
+font-size: 16px;
+}
+
+#submit:hover {
+    cursor:pointer;
+    background-color: rgba(69,4,0,0.8);
 }
