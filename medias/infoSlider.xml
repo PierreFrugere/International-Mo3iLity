@@ -9,11 +9,11 @@
 	<destination>
 		<nom>Ottawa</nom>
 		<photo>../medias/images/ottawa.jpg</photo>
-		<description>Ottawa est la capitale du Canada. 
+		<description>Ottawa est la capitale du Canada.
 		La ville est située dans l'est de l'Ontario, sur la rive sud de la rivière des Outaouais, face à la ville québécoise de Gatineau. Ottawa compte 883 391 habitants, ce qui en fait la quatrième ville la plus peuplée du Canada. Elle appartient à la région de la capitale nationale qui abrite 1,2 million d'habitants.
 		</description>
 	</destination>
-   
+
 	<destination>
 		<nom>Sofia</nom>
 		<photo>../medias/images/sofia.jpg</photo>

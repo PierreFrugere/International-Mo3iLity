@@ -84,7 +84,7 @@ src: url('../fonts/Travelling.ttf');
 font-family: "Cantarell";
 src: url('../fonts/Cantarell-Regular_0.ttf');
 }
- 
+
 /* Déclaration de la police version "gras" */
 @font-face {
 font-family: "Cantarell-Bold";
@@ -236,7 +236,6 @@ a.to_nav:focus {
 
 #primary_nav ul {
     list-style: none;
-    padding: 5px 0;
 }
 
 #primary_nav li a {
@@ -256,6 +255,12 @@ a.to_nav:focus {
 
 #primary_nav li:last-child a {
     border-bottom: none;
+}
+
+#primary_nav li #btn-admin{
+    margin-left: 15px;
+    background-color: #d97565;
+    color: #ffffff;
 }
 
 #primary_nav li a:hover,
@@ -283,7 +288,7 @@ a.to_nav:focus {
     #primary_nav {
         font-family: Travelling;
         position: absolute;
-        top: 5px;
+        top: 6px;
         right: 10px;
         background: none;
     }
@@ -296,9 +301,6 @@ a.to_nav:focus {
         float: left;
         border: none;
         padding: 0 10px;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
     }
 
     #primary_nav li.top {
@@ -470,7 +472,7 @@ a.to_nav:focus {
     border-radius: 4px;
     font-size: 16px;
     background-color: #e1dad6;
-    background-position: 10px 10px; 
+    background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
 }
@@ -550,7 +552,7 @@ a.to_nav:focus {
    -webkit-border-radius: 5px;
    -moz-border-radius: 5px;
    border-radius: 5px;
-   background: url(img/cbb_fleche.png) no-repeat 96% 0; 
+   background: url(img/cbb_fleche.png) no-repeat 96% 0;
    height: 29px;
    overflow: hidden;
    width: 240px;
@@ -577,8 +579,8 @@ a.to_nav:focus {
     border: 2px solid #3FA63D;
     width:75%;
     -moz-border-radius:8px;
-    -webkit-border-radius:8px;  
-    border-radius:50px;  
+    -webkit-border-radius:8px;
+    border-radius:50px;
     padding-bottom: 15px;
 }
 
@@ -644,7 +646,7 @@ h5 {
     text-align: center;
 }
 
-/* div englobant txtDescr et resume 
+/* div englobant txtDescr et resume
 #descrDesti {
     float: left;
     position: relative;
@@ -669,7 +671,7 @@ h5 {
     float:right;
     text-align:center;
     border-radius: 15px;
-    padding:15px; 
+    padding:15px;
     border: rgb(70,86,230) 2px solid;
     background-color: rgba(70,86,230,0.3);
 }
@@ -700,7 +702,7 @@ h5 {
     min-height: 460px;
 }
 
-/* div témoignages */ 
+/* div témoignages */
 #temoignages {
     margin-left: 25px;
     margin-right: 25px;
@@ -750,7 +752,7 @@ h5 {
     background-color: white;
 }
 
-/* notes par thèmes */ 
+/* notes par thèmes */
 .cellNoteTheme {
     vertical-align: middle;
     padding:50px;
@@ -775,7 +777,7 @@ h5 {
 
 
 /* ------------------- FAIRE SES VOEUX ------------------- */
-/* formulaire de choix */ 
+/* formulaire de choix */
 #formVoeux {
     text-align: center;
 }
@@ -810,7 +812,7 @@ h5 {
     border-right: none !important;
 }
 
-/* durée */ 
+/* durée */
 .thDuree {
     width: 15%;
     border-left: none !important;
@@ -895,7 +897,7 @@ h5 {
 }
 
 .btDefault:hover {
-    background-color: rgba(217,117,101,0.8) !important; /* orange : #d97565 avec transparence */ 
+    background-color: rgba(217,117,101,0.8) !important; /* orange : #d97565 avec transparence */
     cursor: pointer;
 }
 
@@ -942,11 +944,27 @@ background-color: #450400; /* rouge bordeaux plus foncé */
 color:white;
 
 height:35px;
-border:none;    
+border:none;
 font-size: 16px;
 }
 
 #submit:hover {
     cursor:pointer;
     background-color: rgba(69,4,0,0.8);
+}
+
+#admin {
+    margin : 20px;
+}
+
+.ajoutSlider, .deleteSlider{
+    margin-left: 20%;
+}
+
+.class-bouton {
+    background-color: transparent;
+    border: 3px solid #d97565;
+    font-family: Travelling;
+    font-size: 30px;
+    color: #d97565;
 }

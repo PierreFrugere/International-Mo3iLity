@@ -1,43 +1,66 @@
 <html lang="fr">
 <head>
 
-    <meta charset="utf-8">
-    <title>International Mo3iLity | Destinations</title>
-    <meta name="description" content="Liste des destinations pour le choix de la mobilité internationnale à l'école 3iL">
-    <meta name="author" content="Florian Louargant & Pierre Frugere">
+  <meta charset="utf-8">
+  <title>International Mo3iLity | Destinations</title>
+  <meta name="description" content="Liste des destinations pour le choix de la mobilité internationnale à l'école 3iL">
+  <meta name="author" content="Florian Louargant & Pierre Frugere">
 
-    <!-- Le meta magique pour les appareils mobiles :)-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Le meta magique pour les appareils mobiles :)-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Font–––––––– -->
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <!-- Font–––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-    <!--css-->
-    <link rel="stylesheet" href="../../css/style.css">
+  <!--css-->
+  <link rel="stylesheet" href="../../css/style.css">
 
-    <!--    TODO - voir l'utilité réellement-->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <!--    TODO - voir l'utilité réellement-->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-    <!-- Favicons-->
-    <link rel="icon" type="image/png" href="../../medias/images/favicon.png">
+  <!-- Favicons-->
+  <link rel="icon" type="image/png" href="../../medias/images/favicon.png">
 
 </head>
 <body id="home">
 
-<div class="wrapper">
+  <div class="wrapper">
 
     <?php include(dirname(__FILE__).'\..\..\vues\Defaut\header.html'); ?>
 
     <!--     Contenu de la page -->
     <div class="container">
-        <h2>ADMINISTRATION</h2>
-        <p>Work In Progress...</p>
-    </div><!--container-->
+      <h2>ADMINISTRATION</h2>
+      <div id="admin">
+          <hr/>
+        <h3>Ajouter un slider</h3>
+        <br>
+        <form method="post" class="ajoutSlider" action="controleurs/ControllerIndex.php">
+          <label for="nom">Nom de la destination</label>
+          <input class="nom" type="text" name="nom" required><br><br>
+          <label for="description">Description de la destination</label>
+          <textarea class="description" rows="4" cols="20" name="description"></textarea><br><br>
+          <label for="fileToUpload">Fichier image</label>
+          <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*"><br><br>
+          <input class="class-bouton" type="submit" name="send" value="Envoyer">
+        </form>
+        <hr/>
+        <h3>Supprimer un slider</h3>
+        <form method="post" class="deleteSlider" action="controleurs/ControllerIndex.php">
+          <select name="listeSlider">
+            <?php foreach($slidesDestination as $dest) {?>
+              <option><?php echo $dest; ?></option>
+            <?php } ?>
+          </select>
+              <input class="class-bouton" type="submit" name="send" value="Supprimer">
+            </form>
+          </div>
+        </div><!--container-->
 
-    <?php include(dirname(__FILE__).'\..\..\vues\Defaut\footer.phtml'); ?>
+        <?php include(dirname(__FILE__).'\..\..\vues\Defaut\footer.phtml'); ?>
 
-</div><!--end wrapper-->
-</body>
-</html>
+      </div><!--end wrapper-->
+    </body>
+    </html>
